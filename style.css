@@ -82,37 +82,7 @@ header .socials a:hover {
   font-weight: bold;
 }
 
-/* --- Зум --- */
-.img-zoom-lens {
-  position: absolute;
-  border: 2px solid #000;
-  width: 100px;
-  height: 100px;
-  opacity: 0.4;
-  background-color: #fff;
-  cursor: crosshair;
-  display: none;
-  z-index: 5;
-}
 
-.img-zoom-result {
-  border: 1px solid #ccc;
-  width: 400px;
-  height: 400px;
-  margin-left: 20px;
-  background-repeat: no-repeat;
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 100%; /* появится справа от картинки */
-  z-index: 10;
-}
-
-.img-zoom-result img {
-  position: fixed;
-  width: 200%;
-  height: 200%;
-}
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;

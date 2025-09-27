@@ -29,10 +29,7 @@
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
     <div class="lightbox-content">
-      <div class="lightbox-wrapper">
-        <img id="lightbox-img" src="" alt="">
-        <!-- сюда будет добавляться lens и zoom-result -->
-      </div>
+      <img id="lightbox-img" src="" alt="">
       <div class="info">
         <div id="lightbox-title"></div>
         <div id="lightbox-desc"></div>
@@ -41,70 +38,12 @@
   </div>
 
   <script>
-    // Функция увеличения
-    function addZoomEffect(img) {
-      // убираем старые зумы если они есть
-      const oldLens = document.querySelector('.img-zoom-lens');
-      const oldResult = document.querySelector('.img-zoom-result');
-      if (oldLens) oldLens.remove();
-      if (oldResult) oldResult.remove();
-
-      const lens = document.createElement('div');
-      lens.className = 'img-zoom-lens';
-      img.parentElement.appendChild(lens);
-
-      const result = document.createElement('div');
-      result.className = 'img-zoom-result';
-      const zoomedImg = img.cloneNode();
-      result.appendChild(zoomedImg);
-      img.parentElement.appendChild(result);
-
-      const cx = result.offsetWidth / lens.offsetWidth;
-      const cy = result.offsetHeight / lens.offsetHeight;
-
-      zoomedImg.style.width = img.width * cx + "px";
-      zoomedImg.style.height = img.height * cy + "px";
-
-      function moveLens(e) {
-        e.preventDefault();
-        const rect = img.getBoundingClientRect();
-        let x = e.pageX - rect.left - window.pageXOffset - lens.offsetWidth / 2;
-        let y = e.pageY - rect.top - window.pageYOffset - lens.offsetHeight / 2;
-
-        if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
-        if (x < 0) x = 0;
-        if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
-        if (y < 0) y = 0;
-
-        lens.style.left = x + "px";
-        lens.style.top = y + "px";
-        zoomedImg.style.left = -x * cx + "px";
-        zoomedImg.style.top = -y * cy + "px";
-      }
-
-      img.addEventListener('mousemove', moveLens);
-      lens.addEventListener('mousemove', moveLens);
-
-      img.addEventListener('mouseover', () => {
-        lens.style.display = 'block';
-        result.style.display = 'block';
-      });
-      img.addEventListener('mouseout', () => {
-        lens.style.display = 'none';
-        result.style.display = 'none';
-      });
-
-      lens.style.display = 'none';
-      result.style.display = 'none';
-    }
-
-    // Основная логика галереи
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDesc = document.getElementById('lightbox-desc');
     const closeBtn = document.querySelector('.close');
-    lightbox.style.display = 'none';
+    lightbox.style.display = 'none'; // скрыт по умолчанию
 
     fetch('gallery.json')
       .then(response => response.json())
@@ -142,9 +81,6 @@
               lightboxImg.style.transition = "transform 0.5s ease";
               lightboxImg.style.transform = "translate(0,0) scale(1)";
             });
-
-            // Подключаем зум только после загрузки картинки в лайтбоксе
-            setTimeout(() => addZoomEffect(lightboxImg), 300);
           });
         });
 
@@ -164,4 +100,5 @@
       .catch(error => console.error('Ошибка загрузки JSON:', error));
   </script>
 </body>
+
 </html>
