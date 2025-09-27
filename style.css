@@ -21,7 +21,8 @@ header {
   background: #222;
   color: white;
 }
-header h1{
+
+header h1 {
   margin: 0;
   font-size: 28px;
 }
@@ -31,8 +32,8 @@ header .logo {
   font-weight: bold;
 }
 
-  header nav a 
-  header .socials a {
+header nav a,
+header .socials a {
   color: white;
   margin-left: 15px;
   text-decoration: none;
@@ -53,53 +54,6 @@ header .socials a:hover {
 }
 
 /* --- Галерея --- */
-
-
-.item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.item img {
-  width: 100%;
-  height: 250px; /* фиксированная высота ячейки */
-  object-fit: cover; /* заполняет полностью */
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.item .title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 5px 10px;
-  font-size: 14px;
-  text-align: center;
-}
-.title {
-  margin-top: 5px;
-  font-weight: bold;
-}
-/* ---------------------- */
-/* Новые работы (особые) */
-/* ---------------------- */
-.item.new {
-  border: 3px solid #ff9800;
-  box-shadow: 0 0 20px rgba(255, 152, 0, 0.6);
-  transform: scale(1.05);
-}
-
-.item.new .title {
-  background: linear-gradient(45deg, #ff9800, #ffcc80);
-  color: white;
-  font-weight: bold;
-}
-/* Общая галерея */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -108,6 +62,7 @@ header .socials a:hover {
   max-width: 1400px;
   margin: 0 auto;
 }
+
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -119,17 +74,12 @@ header .socials a:hover {
 .gallery-item:hover {
   transform: scale(1.05);
 }
+
 .gallery-item img {
   width: 100%;
-  height: 100%;
+  height: 250px; /* фиксированная высота */
+  object-fit: cover; /* чтобы картинка полностью заполняла ячейку */
   display: block;
-  object-fit: cover; /* картинка полностью заполняет ячейку */
-}
-
-/* Последние работы (из начала списка) */
-.gallery-item.featured {
-  grid-column: span 2; /* шире */
-  grid-row: span 2;    /* выше */
 }
 
 .gallery-item .caption {
@@ -143,7 +93,18 @@ header .socials a:hover {
   text-align: center;
   font-size: 16px;
 }
-/* Последние работы */
+
+/* Последние работы (выделенные) */
+.gallery-item.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item.featured img {
+  height: 100%; /* на крупных ячейках картинка растянется полностью */
+}
+
+/* Последние работы (секция) */
 .latest {
   margin: 40px 0;
   padding: 20px;
@@ -159,12 +120,6 @@ header .socials a:hover {
   margin-bottom: 20px;
 }
 
-.latest .item img {
-  border: 3px solid gold;
-  border-radius: 10px;
-}
-
-/* Все работы */
 .all-works {
   margin: 40px 0;
 }
@@ -173,6 +128,7 @@ header .socials a:hover {
   text-align: center;
   margin-bottom: 20px;
 }
+
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;
@@ -219,7 +175,6 @@ header .socials a:hover {
   text-align: center;
   line-height: 1.4;
 }
-
 
 .close {
   position: absolute;
