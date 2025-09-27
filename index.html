@@ -59,48 +59,7 @@
                  data-title="${painting.title}" 
                  data-desc="${painting.desc}">
             <div class="title">${painting.title}</div>
-          `;
-          gallery.appendChild(div);
-
-          const img = div.querySelector('img');
-          img.addEventListener('click', (e) => {
-            lightbox.style.display = 'flex';
-            lightboxImg.src = e.target.src;
-            lightboxTitle.textContent = e.target.dataset.title;
-            lightboxDesc.textContent = e.target.dataset.desc;
-
-            // Анимация вылета
-            const rect = e.target.getBoundingClientRect();
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const offsetX = rect.left + rect.width/2 - centerX;
-            const offsetY = rect.top + rect.height/2 - centerY;
-
-            lightboxImg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.1)`;
-            requestAnimationFrame(() => {
-              lightboxImg.style.transition = "transform 0.5s ease";
-              lightboxImg.style.transform = "translate(0,0) scale(1)";
-            });
-          });
-        });
-
-        // Закрытие крестиком
-        closeBtn.addEventListener('click', () => {
-          lightbox.style.display = 'none';
-          lightboxImg.style.transition = "none";
-        });
-
-        // Закрытие кликом вне картинки
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) {
-            lightbox.style.display = 'none';
-            lightboxImg.style.transition = "none";
-          }
-        });
-      })
-      .catch(error => console.error('Ошибка загрузки JSON:', error));
-	  
-	  function addZoomEffect(img) {
+          function addZoomEffect(img) {
   const lens = document.createElement('div');
   lens.className = 'img-zoom-lens';
   img.parentElement.appendChild(lens);
@@ -163,6 +122,48 @@ data.forEach(painting => {
   const img = gallery.lastChild.querySelector('img'); // последняя добавленная картинка
   addZoomEffect(img);
 });
+		  `;
+          gallery.appendChild(div);
+
+          const img = div.querySelector('img');
+          img.addEventListener('click', (e) => {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = e.target.src;
+            lightboxTitle.textContent = e.target.dataset.title;
+            lightboxDesc.textContent = e.target.dataset.desc;
+
+            // Анимация вылета
+            const rect = e.target.getBoundingClientRect();
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const offsetX = rect.left + rect.width/2 - centerX;
+            const offsetY = rect.top + rect.height/2 - centerY;
+
+            lightboxImg.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(0.1)`;
+            requestAnimationFrame(() => {
+              lightboxImg.style.transition = "transform 0.5s ease";
+              lightboxImg.style.transform = "translate(0,0) scale(1)";
+            });
+          });
+        });
+
+        // Закрытие крестиком
+        closeBtn.addEventListener('click', () => {
+          lightbox.style.display = 'none';
+          lightboxImg.style.transition = "none";
+        });
+
+        // Закрытие кликом вне картинки
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+            lightboxImg.style.transition = "none";
+          }
+        });
+      })
+      .catch(error => console.error('Ошибка загрузки JSON:', error));
+	  
+	  
   </script>
 </body>
 </html>
