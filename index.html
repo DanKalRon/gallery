@@ -12,23 +12,38 @@
       gap: 15px;
       padding: 20px;
     }
-    .gallery img {
+    .item {
+      text-align: center;
+    }
+    .item img {
       width: 100%;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       transition: transform .3s;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+    .item img:hover { transform: scale(1.05); }
+    .title { margin-top: 5px; font-weight: bold; }
   </style>
 </head>
 <body>
   <h1>Галерея картин</h1>
-  <div class="gallery">
-    <img src="images/pic1.jpg" alt="Картина 1">
-    <img src="images/pic2.jpg" alt="Картина 2">
-    <img src="images/pic3.jpg" alt="Картина 3">
-  </div>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    fetch('gallery.json')
+      .then(response => response.json())
+      .then(data => {
+        const gallery = document.getElementById('gallery');
+        data.forEach(painting => {
+          const div = document.createElement('div');
+          div.className = 'item';
+          div.innerHTML = `
+            <img src="images/${painting.file}" alt="${painting.title}">
+            <div class="title">${painting.title}</div>
+          `;
+          gallery.appendChild(div);
+        });
+      });
+  </script>
 </body>
 </html>
