@@ -104,11 +104,14 @@ header .socials a:hover {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%; /* появится справа от картинки */
   z-index: 10;
 }
 
-
+.img-zoom-result img {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+}
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;
