@@ -59,7 +59,8 @@
                  data-title="${painting.title}" 
                  data-desc="${painting.desc}">
             <div class="title">${painting.title}</div>
-          function addZoomEffect(img) {
+       		  `;
+			  function addZoomEffect(img) {
   const lens = document.createElement('div');
   lens.className = 'img-zoom-lens';
   img.parentElement.appendChild(lens);
@@ -122,7 +123,6 @@ data.forEach(painting => {
   const img = gallery.lastChild.querySelector('img'); // последняя добавленная картинка
   addZoomEffect(img);
 });
-		  `;
           gallery.appendChild(div);
 
           const img = div.querySelector('img');
