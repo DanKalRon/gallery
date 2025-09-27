@@ -108,9 +108,7 @@ header .socials a:hover {
   z-index: 10;
 }
 
-.img-zoom-result img {
-  position: absolute;
-}
+
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;
