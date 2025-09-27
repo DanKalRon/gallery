@@ -94,9 +94,17 @@ header .socials a:hover {
   overflow: hidden;
 }
 
+.lightbox-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
 .lightbox img {
   max-width: 80%;
-  max-height: 80%;
+  max-height: 70vh;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   transform-origin: center;
@@ -104,21 +112,21 @@ header .socials a:hover {
   object-fit: contain;
 }
 
-.lightbox-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #lightbox-title {
   font-size: 22px;
   font-weight: bold;
   margin-top: 15px;
+  color: #fff;
+  text-align: center;
 }
 
 #lightbox-desc {
-   margin-top: 10px;
+  font-size: 16px;
+  margin-top: 8px;
+  color: #ddd;
   max-width: 600px;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .close {
