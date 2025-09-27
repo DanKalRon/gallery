@@ -10,7 +10,7 @@
 <body>
   <!-- Шапка -->
   <header>
-    <div class="logo">🎨 Галерея</div>
+    <div class="logo">🎨 Калинина Оксана и её творчество</div>
     <nav>
       <a href="index.html">Картины</a>
       <a href="about.html">О художнике</a>
@@ -66,8 +66,8 @@
           const div = document.createElement('div');
           div.className = 'item';
 
-          // Первые 3 работы идут в "последние"
-          if (index < 3) {
+          // Первые 5 работы идут в "последние"
+          if (index < 5) {
             div.classList.add('new');
             latestGallery.appendChild(div);
           } else {
