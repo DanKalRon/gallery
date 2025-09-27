@@ -104,6 +104,7 @@ header .socials a:hover {
   display: none;
   position: absolute;
   top: 0;
+  left: 300%; /* появится справа от картинки */
   z-index: 10;
 }
 
