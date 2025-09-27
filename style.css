@@ -129,6 +129,38 @@ header .socials a:hover {
   line-height: 1.4;
 }
 
+/* --- Лупа --- */
+.img-zoom-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  pointer-events: none; /* чтобы не мешать движению мыши */
+  display: none; /* по умолчанию скрыта */
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.img-zoom-result {
+  position: absolute;
+  border: 1px solid #000;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  display: none; /* скрыта до наведения */
+  z-index: 10;
+}
+
+.img-zoom-result img {
+  position: absolute;
+  transform-origin: top left;
+}
+
 .close {
   position: absolute;
   top: 20px;

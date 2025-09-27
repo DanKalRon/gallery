@@ -99,6 +99,70 @@
         });
       })
       .catch(error => console.error('Ошибка загрузки JSON:', error));
+	  
+	  function addZoomEffect(img) {
+  const lens = document.createElement('div');
+  lens.className = 'img-zoom-lens';
+  img.parentElement.appendChild(lens);
+
+  const result = document.createElement('div');
+  result.className = 'img-zoom-result';
+  const zoomedImg = img.cloneNode();
+  result.appendChild(zoomedImg);
+  img.parentElement.appendChild(result);
+
+  result.style.display = 'block';
+  lens.style.display = 'block';
+
+  const cx = result.offsetWidth / lens.offsetWidth;
+  const cy = result.offsetHeight / lens.offsetHeight;
+
+  zoomedImg.style.width = img.width * cx + "px";
+  zoomedImg.style.height = img.height * cy + "px";
+
+  function moveLens(e) {
+    e.preventDefault();
+    const pos = getCursorPos(e, img);
+    let x = pos.x - lens.offsetWidth / 2;
+    let y = pos.y - lens.offsetHeight / 2;
+
+    // ограничение
+    if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+    if (x < 0) x = 0;
+    if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+    if (y < 0) y = 0;
+
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    zoomedImg.style.left = -x * cx + "px";
+    zoomedImg.style.top = -y * cy + "px";
+  }
+
+  function getCursorPos(e, img) {
+    const rect = img.getBoundingClientRect();
+    return {
+      x: e.pageX - rect.left - window.pageXOffset,
+      y: e.pageY - rect.top - window.pageYOffset
+    };
+  }
+
+  img.addEventListener('mousemove', moveLens);
+  lens.addEventListener('mousemove', moveLens);
+  img.addEventListener('mouseout', () => {
+    lens.style.display = 'none';
+    result.style.display = 'none';
+  });
+  img.addEventListener('mouseover', () => {
+    lens.style.display = 'block';
+    result.style.display = 'block';
+  });
+}
+
+// Добавляем к каждой картинке после генерации
+data.forEach(painting => {
+  const img = gallery.lastChild.querySelector('img'); // последняя добавленная картинка
+  addZoomEffect(img);
+});
   </script>
 </body>
 </html>
