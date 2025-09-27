@@ -44,12 +44,11 @@
         const lightboxTitle = document.getElementById('lightbox-title');
         const lightboxDesc = document.getElementById('lightbox-desc');
         const closeBtn = document.querySelector('.close');
-
-        data.forEach(painting => {
+	        data.forEach(painting => {
           const div = document.createElement('div');
           div.className = 'item';
           div.innerHTML = `
-            <img src="images/${painting.file}" 
+            <img src="/images/${painting.file}" 
                  alt="${painting.title}" 
                  data-title="${painting.title}" 
                  data-desc="${painting.desc}">
