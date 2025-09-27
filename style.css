@@ -82,7 +82,62 @@ header .socials a:hover {
   font-weight: bold;
 }
 
+/* Общая галерея */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
 
+.gallery .item {
+  width: 200px;
+  text-align: center;
+}
+
+.gallery .item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery .item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Последние работы */
+.latest {
+  margin: 40px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff8dc, #fff);
+  border: 2px solid gold;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.latest h2 {
+  text-align: center;
+  color: goldenrod;
+  margin-bottom: 20px;
+}
+
+.latest .item img {
+  border: 3px solid gold;
+  border-radius: 10px;
+}
+
+/* Все работы */
+.all-works {
+  margin: 40px 0;
+}
+
+.all-works h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;
