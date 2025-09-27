@@ -47,6 +47,8 @@
   justify-content: center; 
   align-items: center;
   overflow: hidden;
+  text-align: center;
+  color: #fff;
 }
 .lightbox img {
   max-width: 80%;
@@ -60,12 +62,15 @@
 .lightbox.show img {
   transform: scale(1);
 }
-
+.lightbox desc {
+  transform: scale(1);
+}
 .lightbox #lightbox-title {
-  margin-top: 10px;
+  margin-top: 15px;
   color: #fff;
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .close {
@@ -77,9 +82,57 @@
   color: #fff;
   cursor: pointer;
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+header nav a {
+  margin: 0 15px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  color: #ffcc00;
+}
+
+header .socials a {
+  margin-left: 15px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+header .socials a:hover {
+  color: #fff;
+}
   
 }
   </style>
+  <div class="logo">🎨 Галерея</div>
+  <nav>
+    <a href="#gallery">Картины</a>
+    <a href="#about">О художнике</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <div class="socials">
+    <a href="https://instagram.com/username" target="_blank">Instagram</a>
+    <a href="https://vk.com/username" target="_blank">VK</a>
+    <a href="mailto:example@mail.com">Email</a>
+  </div>
 </head>
 <body>
   <h1>Оксана Калинина и её творчество</h1>
@@ -87,7 +140,10 @@
 <div id="lightbox" class="lightbox">
   <span class="close">&times;</span>
   <img id="lightbox-img" src="">
-  <div id="lightbox-title"></div>
+  <div class="info">
+      <div id="lightbox-title"></div>
+      <div id="lightbox-desc"></div>
+	  </div>
 </div>
   <script>
     fetch('gallery.json')
