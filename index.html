@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <title>Галерея картин</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- Шапка -->
   <header>
@@ -23,11 +25,14 @@
   <h1>Галерея картин</h1>
   <div class="gallery" id="gallery"></div>
 
-  <!-- Lightbox -->
+  <!-- Лайтбокс -->
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
     <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-wrapper">
+        <img id="lightbox-img" src="" alt="">
+        <!-- сюда будет добавляться lens и zoom-result -->
+      </div>
       <div class="info">
         <div id="lightbox-title"></div>
         <div id="lightbox-desc"></div>
@@ -36,8 +41,14 @@
   </div>
 
   <script>
-    // Зум-эффект
+    // Функция увеличения
     function addZoomEffect(img) {
+      // убираем старые зумы если они есть
+      const oldLens = document.querySelector('.img-zoom-lens');
+      const oldResult = document.querySelector('.img-zoom-result');
+      if (oldLens) oldLens.remove();
+      if (oldResult) oldResult.remove();
+
       const lens = document.createElement('div');
       lens.className = 'img-zoom-lens';
       img.parentElement.appendChild(lens);
@@ -48,11 +59,8 @@
       result.appendChild(zoomedImg);
       img.parentElement.appendChild(result);
 
-      result.style.display = 'none';
-      lens.style.display = 'none';
-
-      const cx = (result.offsetWidth / lens.offsetWidth) || 2;
-      const cy = (result.offsetHeight / lens.offsetHeight) || 2;
+      const cx = result.offsetWidth / lens.offsetWidth;
+      const cy = result.offsetHeight / lens.offsetHeight;
 
       zoomedImg.style.width = img.width * cx + "px";
       zoomedImg.style.height = img.height * cy + "px";
@@ -85,14 +93,18 @@
         lens.style.display = 'none';
         result.style.display = 'none';
       });
+
+      lens.style.display = 'none';
+      result.style.display = 'none';
     }
 
+    // Основная логика галереи
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxTitle = document.getElementById('lightbox-title');
     const lightboxDesc = document.getElementById('lightbox-desc');
     const closeBtn = document.querySelector('.close');
-    lightbox.style.display = 'none'; // скрыт по умолчанию
+    lightbox.style.display = 'none';
 
     fetch('gallery.json')
       .then(response => response.json())
@@ -113,10 +125,6 @@
 
           const img = div.querySelector('img');
 
-          // подключаем зум
-          addZoomEffect(img);
-
-          // открытие лайтбокса
           img.addEventListener('click', e => {
             lightbox.style.display = 'flex';
             lightboxImg.src = e.target.src;
@@ -134,6 +142,9 @@
               lightboxImg.style.transition = "transform 0.5s ease";
               lightboxImg.style.transform = "translate(0,0) scale(1)";
             });
+
+            // Подключаем зум только после загрузки картинки в лайтбоксе
+            setTimeout(() => addZoomEffect(lightboxImg), 300);
           });
         });
 
