@@ -85,28 +85,32 @@ header .socials a:hover {
 /* --- Зум --- */
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid #000;
+  border: 2px solid #000;
   width: 100px;
   height: 100px;
   opacity: 0.4;
   background-color: #fff;
   cursor: crosshair;
+  display: none;
+  z-index: 5;
 }
 
 .img-zoom-result {
-  position: absolute;
-  right: -120%; /* чтобы появлялось справа от картинки */
-  top: 0;
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
   border: 1px solid #ccc;
-  z-index: 9999;
+  width: 400px;
+  height: 400px;
+  margin-left: 20px;
+  background-repeat: no-repeat;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* появится справа от картинки */
+  z-index: 10;
 }
+
 .img-zoom-result img {
   position: absolute;
 }
-
 /* --- Лайтбокс --- */
 .lightbox {
   display: none;
