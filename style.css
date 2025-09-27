@@ -102,14 +102,14 @@ header .socials a:hover {
   margin-left: 20px;
   background-repeat: no-repeat;
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 300%; /* появится справа от картинки */
+  left: 100%; /* появится справа от картинки */
   z-index: 10;
 }
 
 .img-zoom-result img {
-  position: absolute;
+  position: fixed;
   width: 200%;
   height: 200%;
 }
