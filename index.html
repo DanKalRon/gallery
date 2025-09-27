@@ -11,14 +11,20 @@
   <!-- Шапка -->
   <header>
     <div class="logo">🎨 Галерея</div>
-    <nav> <a href="index.html">Картины</a> <a href="about.html">О художнике</a> <a href="contacts.html">Контакты</a> </nav>
-    <div class="socials"> <a href="https://t.me/kalininaoksana1976" target="_blank">Telegram</a> <a href="https://vk.com/id361201748" target="_blank">VK</a> </div>
+    <nav> <a href="index.html">Картины</a> 
+	<a href="about.html">О художнике</a> 
+	<a href="contacts.html">Контакты</a> </nav>
+    <div class="socials"> 
+	<a href="https://t.me/kalininaoksana1976" target="_blank">Telegram</a> 
+	<a href="https://vk.com/id361201748" target="_blank">VK</a> </div>
   </header>
   <h1>Галерея картин</h1>
   <div class="gallery" id="gallery"></div>
   <!-- Lightbox -->
-  <div id="lightbox" class="lightbox"> <span class="close">&times;</span>
-    <div class="lightbox-content"> <img id="lightbox-img" src="" alt="">
+  <div id="lightbox" class="lightbox"> 
+  <span class="close">&times;</span>
+    <div class="lightbox-content"> 
+	<img id="lightbox-img" src="" alt="">
       <div class="info">
         <div id="lightbox-title"></div>
         <div id="lightbox-desc"></div>
@@ -32,15 +38,18 @@
     const lightboxDesc = document.getElementById('lightbox-desc');
     const closeBtn = document.querySelector('.close');
     lightbox.style.display = 'none'; // скрыт по умолчанию 
+	
 	fetch('gallery.json') 
 	.then(response => response.json()) 
 	.then(data => { 
 	const gallery = document.getElementById('gallery'); 
+	
 	data.forEach(painting => { 
 	const div = document.createElement('div'); 
 	div.className = 'item'; 
 	div.innerHTML = <img src="images/${painting.file}" alt="${painting.title}" data-title="${painting.title}" data-desc="${painting.desc}"> 
 	<div class="title">${painting.title}</div> ; 
+	
 	gallery.appendChild(div); 
 	const img = div.querySelector('img'); 
 	img.addEventListener('click', (e) => { 
