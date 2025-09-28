@@ -231,7 +231,7 @@ main.content {
     line-height: 1.4;
 }
 /* --- Кнопка расширить --- */
-.expand-button {
+.expand-btn {
   background: linear-gradient(135deg, #c79f5d, #e5c07b); /* золотистый градиент */
   border: none;
   border-radius: 30px;
@@ -247,18 +247,18 @@ main.content {
   transition: all 0.3s ease;
 }
 
-.expand-button:hover {
+.expand-btn:hover {
   background: linear-gradient(135deg, #e5c07b, #c79f5d);
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-.expand-button .arrow {
+.expand-btn .arrow {
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
-.expand-button.active .arrow {
+.expand-btn.active .arrow {
   transform: rotate(180deg);
 }
 /* --- Подвал --- */
