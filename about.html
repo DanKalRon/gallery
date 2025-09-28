@@ -5,17 +5,16 @@
   <title>Обо мне</title>
   <link rel="stylesheet" href="style.css">
   <!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
-<!-- Для старых браузеров -->
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Apple iPhone/iPad -->
-<link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
-<!-- Android Chrome -->
-<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
 </head>
 <body>
+
+  <!-- Шапка -->
   <header>
-    <div class="logo">🎨 Галерия</div>
+    <div class="logo">🎨 Галерея</div>
     <nav>
       <a href="index.html">Картины</a>
       <a href="about.html">О художнике</a>
@@ -25,34 +24,75 @@
       <a href="https://t.me/kalininaoksana1976" target="_blank">Telegram</a>
       <a href="https://vk.com/id361201748" target="_blank">VK</a>
     </div>
-	  </header>
+  </header>
 
- <!-- Блок о художнике -->
- <main class="content">
-  <section class="artist-section">
-  <div class="artist-photo">
-    <img src="images/autor.jpg" alt="Художник">
-  </div>
-  <div class="artist-text">
+  <!-- Основной контент -->
+  <main class="content">
+    <section class="artist-section">
+      <div class="artist-photo">
+        <img src="images/autor.jpg" alt="Художник">
+      </div>
+      <div class="artist-text">
         <h1>О художнике</h1>
         <p>Здравствуйте! Я — <strong>Оксана Калинина</strong>, художник, вдохновленный природой и эмоциями. Мои картины отображают внутренние переживания и чувства, которые я испытываю, когда смотрю на окружающий мир. Каждая работа — это моя личная история и путешествие в мир искусства.</p>
         <p>С раннего возраста я была очарована красотой природы и стремилась передать её на холсте. Мой стиль вдохновлен яркими цветами, контрастами и глубокими текстурами. Я предпочитаю работать в технике масляной живописи и акриловых красках, создавая работы, которые излучают эмоции и силу.</p>
         <p>Мои картины украшают дома и галереи в различных странах, и я рада, что могу поделиться своей страстью с вами.</p>
       </div>
-    </div>
-    <div class="artist-gallery">
-	 
+    </section>
+
+    <!-- Галерея художника -->
+    <section class="artist-gallery">
+      <h2>Некоторые мои работы</h2>
       <div class="gallery">
         <div class="gallery-item"><img src="images/Вид из окна в Тоскане.jpg" alt="Вид из окна в Тоскане"></div>
         <div class="gallery-item"><img src="images/Кувшинки.jpg" alt="Кувшинки"></div>
         <div class="gallery-item"><img src="images/Осень.jpg" alt="Осень"></div>
       </div>
+    </section>
+  </main>
+
+  <!-- Лайтбокс -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+      <div class="info">
+        <div id="lightbox-title"></div>
+        <div id="lightbox-desc"></div>
+      </div>
     </div>
-  </section>
- </main>
+  </div>
+
+  <!-- Подвал -->
   <footer>
     <p>&copy; 2025 Галерея картин Оксаны Калининой</p>
   </footer>
+
+  <script>
+    // Лайтбокс
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const closeBtn = document.querySelector('.close');
+    lightbox.style.display = 'none';
+
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', e => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = e.target.src;
+        lightboxTitle.textContent = e.target.alt;
+        lightboxDesc.textContent = '';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>
