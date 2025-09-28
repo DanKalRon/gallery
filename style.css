@@ -1,12 +1,4 @@
 /* --- Общие стили --- */
-/* body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f9f9f9;
-  color: #333;
-}*/
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -16,253 +8,171 @@ body {
 }
 
 @keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    25% {
-        background-position: 50% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    75% {
-        background-position: 50% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 50%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-h1 {
-  text-align: center;
-  margin: 20px 0;
+h1, h2 {
+    text-align: center;
+    color: #444;
 }
 
-/* --- Шапка --- */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #222;
-  color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #222;
+    color: white;
 }
 
-header .logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
+header .logo { font-size: 20px; font-weight: bold; }
 header nav a,
 header .socials a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+header nav a:hover { color: #ffcc00; }
+header .socials a:hover { color: #fff; }
+
+/* --- Контейнер для контента --- */
+main.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-header nav a:hover {
-  color: #ffcc00;
+/* --- Блок о художнике --- */
+.artist-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 40px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff8dc, #fff);
+    border: 3px solid gold;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-header .socials a:hover {
-  color: #fff;
+.artist-photo {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    flex-shrink: 0;
 }
 
-/* --- Галерея --- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+.artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.item {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 250px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
+.artist-text {
+    max-width: 700px;
+    text-align: justify;
+    padding: 0 10px;
+    line-height: 1.6;
 }
 
-.item:hover {
-  transform: translateY(-4px);
+/* --- Галерея внутри страницы художника --- */
+.artist-gallery {
+    width: 100%;
+    margin-top: 30px;
 }
 
-.item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.artist-gallery .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    justify-items: center;
 }
 
-.item .title {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 6px 10px;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
+.gallery-item {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 2px solid gold;
+    background: linear-gradient(135deg, #fffae5, #fff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Последние работы --- */
-.latest .item.new {
-  height: 280px;
-  border: 3px solid #ff9800;
-  box-shadow: 0 0 18px rgba(255, 152, 0, 0.5);
+.gallery-item:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
-/* --- Секции --- */
-.latest {
-  margin: 40px 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #fff8dc, #fff);
-  border-radius: 12px;
-  border: 2px solid gold;
-}
-
-.latest h2,
-.all-works h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #444;
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
 }
 
 /* --- Лайтбокс --- */
 .lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
 }
 
 .lightbox-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 90vw;
-  max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 
 .lightbox img {
-  max-width: 80%;
-  max-height: 70vh;
-  border-radius: 10px;
-  object-fit: contain;
+    max-width: 80%;
+    max-height: 70vh;
+    border-radius: 10px;
+    object-fit: contain;
 }
 
 #lightbox-title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 15px;
-  color: #fff;
-  text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #fff;
+    text-align: center;
 }
 
 #lightbox-desc {
-  font-size: 16px;
-  margin-top: 8px;
-  color: #ddd;
-  max-width: 600px;
-  text-align: center;
-  line-height: 1.4;
-}
-/* --- Стиль страницы "О художнике" --- */
-.artist-section {
-  display: flex;
-  flex-wrap: wrap; /* чтобы на маленьких экранах красиво переносилось */
-  gap: 20px;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 40px 0;
-  padding: 20px;
+    font-size: 16px;
+    margin-top: 8px;
+    color: #ddd;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.4;
 }
 
-.artist-photo {
-  width: 300px;       /* фиксированная ширина */
-  height: 300px;      /* фиксированная высота, как у картин */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  flex-shrink: 0;
-}
-
-.artist-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* полностью заполняет блок */
-  display: block;
-}
-
-.artist-text {
-  max-width: 600px;
-  margin: 0;
-  padding: 0 10px;
-  line-height: 1.6;
-  text-align: justify;
-}
-
-.artist-bio {
-  max-width: 600px;
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.artist-bio h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #444;
-  text-align: center;
-}
-
-.artist-bio p {
-  margin-bottom: 15px;
-}
-.gallery-item {
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.1);
-}
-
-main.content {
-  flex: 1; /* Основной контент занимает всё доступное место */
-}
-
-.artist-text {
-  max-width: 800px;   /* ширина блока с текстом */
-  margin: 0 auto;     /* центрирование по горизонтали */
-  text-align: justify; /* или left/center по желанию */
-  padding: 0 15px;    /* небольшой отступ слева и справа */
-  line-height: 1.6;   /* удобочитаемый межстрочный интервал */
-}
 /* --- Подвал --- */
 footer {
-  background-color: #222;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  flex-shrink: 0; /* Футер не сжимается */
+    background-color: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
 }
 .close {
   position: absolute;
