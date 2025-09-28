@@ -102,7 +102,7 @@
 			<p>Мои картины украшают дома и галереи в различных странах, и я рада, что могу поделиться своей страстью с вами.</p> 
 			          
         </div>
-        <button class="expand-button" id="expand-btn">	Читать дальше <span class="arrow">▼</span></button>
+        <button class="read-more-btn" id="expand-btn">	Читать дальше <span class="arrow">▼</span></button>
       </div>
     </section>
 
@@ -110,10 +110,16 @@
     <section class="artist-gallery">
       <h2>Награды</h2>
       <div class="gallery">
-        <div class="gallery-item"><img src="images/КубокГлобалАзия.jpg" alt="Кубок Global Asia"></div>
-        <div class="gallery-item"><img src="images/ДипломСПБ1.jpg" alt="Диплом Санкт-Петербург 1 место"></div>
-        <div class="gallery-item"><img src="images/ДипломИталия.jpg" alt="Диплом Италия Лауреат"></div>
-        <!-- Дополнительные изображения -->
+        <div class="gallery-item"><img src="images/КубокГлобалАзия.jpg" alt="Кубок Global Asia"></div> 
+		<div class="gallery-item"><img src="images/ДипломСПБ1.jpg" alt="Диплом Санкт-Петербург 1 место"></div> 
+		<div class="gallery-item"><img src="images/ДипломИталия.jpg" alt="Диплом Италия Лауреат"></div> 
+		<div class="gallery-item"><img src="images/ДипломЖивотноеЦарство.jpg" alt="Диплом 3 место"></div> 
+		<div class="gallery-item"><img src="images/ДипломОАР.jpg" alt="Диплом лауреат 1 степени"></div> 
+		<div class="gallery-item"><img src="images/ДипломРоссийскаяНеделяИскусств.jpg" alt="Диплом 3 место"></div> 
+		<div class="gallery-item"><img src="images/ДипломГлобалАзия.jpg" alt="Диплом лауреат 1 степени"></div> 
+		<div class="gallery-item"><img src="images/ДипломМыРоссия.jpg" alt="Диплом 1 место"></div> 
+		<div class="gallery-item"><img src="images/ДипломАрхитектураМира.jpg" alt="Диплом участника"></div> 
+		<div class="gallery-item"><img src="images/ДипломВиртуоз.jpg" alt="Диплом 3 место"></div>
       </div>
     </section>
   </main>
@@ -136,6 +142,25 @@
   </footer>
 
   <script>
+  // Лайтбокс 
+  const lightbox = document.getElementById('lightbox'); 
+  const lightboxImg = document.getElementById('lightbox-img'); 
+  const lightboxTitle = document.getElementById('lightbox-title'); 
+  const lightboxDesc = document.getElementById('lightbox-desc'); 
+  const closeBtn = document.querySelector('.close'); 
+  lightbox.style.display = 'none'; 
+  document.querySelectorAll('.gallery-item img').forEach(img => { 
+  img.addEventListener('click', e => { 
+  lightbox.style.display = 'flex'; 
+  lightboxImg.src = e.target.src; 
+  lightboxTitle.textContent = e.target.alt; 
+  lightboxDesc.textContent = ''; }); }); 
+  closeBtn.addEventListener('click', () => { 
+  lightbox.style.display = 'none'; }); 
+  lightbox.addEventListener('click', e => { 
+  if (e.target === lightbox) 
+  lightbox.style.display = 'none'; }); 
+ 
     // Логика для кнопки разворачивания текста
     const expandBtn = document.getElementById('expand-btn');
     const artistBio = document.getElementById('artist-bio');
