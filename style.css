@@ -179,32 +179,37 @@ header .socials a:hover {
 }
 /* --- Стиль страницы "О художнике" --- */
 .artist-section {
-  background: linear-gradient(45deg, rgba(255, 200, 0, 0.5), rgba(255, 105, 180, 0.5));
-  padding: 40px 20px;
-  color: #333;
-}
-
-.artist-info {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* чтобы на маленьких экранах красиво переносилось */
+  gap: 20px;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: flex-start;
+  margin: 40px 0;
+  padding: 20px;
 }
 
 .artist-photo {
-  width: 300px;
-  margin-right: 30px;
+  width: 300px;       /* фиксированная ширина */
+  height: 300px;      /* фиксированная высота, как у картин */
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  flex-shrink: 0;
 }
 
 .artist-photo img {
   width: 100%;
   height: 100%;
+  object-fit: cover; /* полностью заполняет блок */
   display: block;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+}
+
+.artist-text {
+  max-width: 600px;
+  margin: 0;
+  padding: 0 10px;
+  line-height: 1.6;
+  text-align: justify;
 }
 
 .artist-bio {
