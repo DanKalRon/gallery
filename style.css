@@ -201,8 +201,10 @@ header .socials a:hover {
 
 .artist-photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .artist-bio {
