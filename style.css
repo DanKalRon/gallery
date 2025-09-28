@@ -1,10 +1,23 @@
 /* --- Общие стили --- */
-body {
+/* body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #f9f9f9;
   color: #333;
+}*/
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f4e1d2, #f6b7a3, #f7d2c1); /* Цвета могут быть изменены на те, что отражают стиль художника */
+  background-size: 400% 400%;
+  animation: gradientBackground 10s ease infinite; /* Анимация плавного перехода цветов */
+}
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 h1 {
