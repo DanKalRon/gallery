@@ -7,26 +7,21 @@
   color: #333;
 }*/
 
-/* Плавный анимированный градиент (поставь вместо текущего body {...}) */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: #333;
 
-  /* fallback */
-  background-color: #f4e8de;
-
-  /* анимированный градиент */
-  background: linear-gradient(135deg, #f4e8de 0%, #f7c9b8 33%, #f6e7d7 66%, #e9d7f0 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 12s ease infinite;
+  background: linear-gradient(135deg, #fff9e6, #ffd27f, #ffb84d);
+  background-size: 200% 200%;
+  animation: gradientCycle 30s ease infinite;
 }
 
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes gradientCycle {
+  0%   { background: linear-gradient(135deg, #fff9e6, #ffd27f, #ffb84d); }
+  33%  { background: linear-gradient(135deg, #ffeedd, #e6b800, #804000); }
+  66%  { background: linear-gradient(135deg, #f0e6ff, #d1b3ff, #4d0099); }
+  100% { background: linear-gradient(135deg, #fff9e6, #ffd27f, #ffb84d); }
 }
 
 h1 {
