@@ -5,31 +5,52 @@
   <title>Контактная информация</title>
   <link rel="stylesheet" href="style.css">
   <!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
-<!-- Для старых браузеров -->
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Apple iPhone/iPad -->
-<link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
-<!-- Android Chrome -->
-<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-  </head>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+</head>
 <body>
+  <!-- Шапка -->
   <header>
     <div class="logo">🎨 Галерея</div>
     <nav>
       <a href="index.html">Картины</a>
       <a href="about.html">О художнике</a>
-      <a href="contacts.html">Контакты</a>
+      <a href="contacts.html" class="active">Контакты</a>
     </nav>
     <div class="socials">
       <a href="https://t.me/kalininaoksana1976" target="_blank">Telegram</a>
       <a href="https://vk.com/id361201748" target="_blank">VK</a>
     </div>
-
   </header>
 
-  <h1>Контакты</h1>
- 
+  <!-- Основной контент -->
+  <main class="content">
+    <h1>Контакты</h1>
+    <div class="contacts-container">
+      <div class="contact-card">
+        <h2>📞 Телефон</h2>
+        <p><a href="tel:+79642847294">+7 (964) 284-72-94</a></p>
+      </div>
 
+      <div class="contact-card">
+        <h2>🌐 Социальные сети</h2>
+        <p><a href="https://vk.com/id361201748" target="_blank">ВКонтакте</a></p>
+        <p><a href="https://ok.ru/profile/564615614672" target="_blank">Одноклассники</a></p>
+        <p><a href="https://t.me/kalininaoksana1976" target="_blank">Telegram</a></p>
+      </div>
+
+      <div class="contact-card">
+        <h2>📩 Email</h2>
+        <p><a href="mailto:oksana.kalina@example.com">oksana.kalina@example.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Подвал -->
+  <footer>
+    <p>&copy; 2025 Галерея картин Оксаны Калининой</p>
+  </footer>
 </body>
 </html>
